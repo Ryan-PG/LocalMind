@@ -1,128 +1,126 @@
-# LocalMind
+<div align="center">
 
-**Run AI models locally. Keep your data on your machine.**
+<img src="assets/banner.svg" alt="LocalMind — Run AI models locally" width="100%"/>
 
-LocalMind is a lightweight, cross-platform launcher for running local AI models using interchangeable inference runtimes.
+[![License](https://img.shields.io/github/license/Ryan-PG/LocalMind?style=flat-square&color=22d3ee)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-blue?style=flat-square)](#-getting-started)
+[![Models](https://img.shields.io/badge/models-GGUF-22d3ee?style=flat-square)](#2-download-a-model)
+[![Runtime](https://img.shields.io/badge/runtime-llamafile-a78bfa?style=flat-square)](https://github.com/Mozilla-Ocho/llamafile)
+[![API](https://img.shields.io/badge/API-OpenAI--compatible-a78bfa?style=flat-square)](#-local-api)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square)](#-contributing)
 
-It is designed to make local AI inference straightforward without tying the project to a specific model, model provider, or runtime.
+**🧠 Run AI models locally — no cloud, no API keys, no data leaving your machine.**
 
-[English](README.md) | [فارسی](README.fa.md)
+[English](README.md) · [فارسی](README.fa.md)
+
+</div>
 
 ---
 
-## Features
+## 📖 About
 
-- Run different local AI models.
-- Support for GGUF models.
-- Windows and Linux support.
-- GPU acceleration when supported by the selected runtime and hardware.
-- CPU-only inference.
-- Configurable model and runtime.
-- Local API server.
-- OpenAI-compatible API when supported by the runtime.
-- No cloud account or API key required.
+**LocalMind** is a lightweight, cross-platform launcher for running local AI models using interchangeable inference runtimes.
 
-## Project Structure
+It makes local AI inference straightforward — **without tying the project to a specific model, model provider, or runtime.** Drop in a GGUF model, pick a runtime, and you have a private AI server running on your own hardware in seconds.
+
+## ✨ Features
+
+- 🧠 **Run any local model** — not locked to a specific model or provider
+- 📦 **GGUF support** — works with the most popular local model format
+- 💻 **Windows & Linux** — native launcher for each platform
+- ⚡ **GPU acceleration** — automatic GPU backend selection when supported
+- 🖥️ **CPU-only inference** — works without a discrete GPU
+- 🔀 **Configurable runtime** — swap inference runtimes without changing your workflow
+- 🌐 **Local API server** — OpenAI-compatible chat completions when supported by the runtime
+- 🔒 **100% private** — no cloud account, no API keys, no telemetry
+
+## 🗂️ Project Structure
 
 ```text
 LocalMind/
 ├── runtime/
-│   ├── windows/
-│   │   └── llamafile.exe
-│   └── linux/
-│       └── llamafile
-├── models/
-│   └── model.gguf
-├── run.bat
-├── run.sh
+│   ├── windows/       # Windows runtime executable
+│   └── linux/         # Linux runtime executable
+├── models/            # Your GGUF model files
+├── assets/            # Logo and banner
+├── run.bat            # Windows launcher
+├── run.sh             # Linux launcher
 ├── README.md
 └── README.fa.md
 ```
 
-## Requirements
+## 📋 Requirements
 
-- Windows or Linux.
-- A compatible inference runtime.
-- A supported model file.
-- Optional GPU with a compatible driver and runtime backend.
+| Requirement | Details |
+| ----------- | ------- |
+| Operating System | Windows or Linux |
+| Runtime | A compatible inference runtime (see [Step 1](#1-download-an-inference-runtime)) |
+| Model | A supported model file (see [Step 2](#2-download-a-model)) |
+| GPU *(optional)* | Compatible driver + runtime backend for acceleration |
 
-**Important:** This repository does not include model files or runtime binaries. You must download them separately and place them in the directories shown above.
+> [!IMPORTANT]
+> This repository does **not** include model files or runtime binaries. You must download them separately and place them in the directories shown above.
 
-## 1. Download an Inference Runtime
+## 🚀 Getting Started
 
-This project currently uses [llamafile](https://github.com/Mozilla-Ocho/llamafile) as its example runtime.
+### 1️⃣ Download an Inference Runtime
+
+LocalMind currently uses [llamafile](https://github.com/Mozilla-Ocho/llamafile) as its example runtime.
 
 **Download:** [llamafile Releases](https://github.com/mozilla-ai/llamafile/releases/tag/0.10.6)
 
-Download the executable for your operating system:
+Place the executable for your operating system in the matching folder:
 
-- **Windows:** Download the Windows executable and place it at `runtime/windows/llamafile.exe`.
-- **Linux:** Download the Linux executable and place it at `runtime/linux/llamafile`.
+- **Windows:** `runtime/windows/llamafile.exe`
+- **Linux:** `runtime/linux/llamafile`
 
-You only need the executable for your operating system.
+> [!TIP]
+> The launcher automatically detects any executable whose **filename contains `llama`** in the runtime folder — no renaming required if you keep the original name.
 
-The runtime is replaceable. Other compatible runtimes can be integrated in the future.
+The runtime is fully replaceable. Other compatible runtimes can be integrated in the future.
 
-## 2. Download a Model
+### 2️⃣ Download a Model
 
-LocalMind is not limited to a particular model. You can use any model format supported by your selected runtime.
+LocalMind is not limited to a particular model — use **any model format supported by your selected runtime**. Drop one or more `.gguf` files into the `models/` folder, and the launcher will list them and let you choose at startup.
 
-### Example: Qwen3.8-2B
+#### Example: Qwen3.8-2B
 
 For the initial setup, you can use:
 
 - Model: [Qwen3.8-2B-Distill-GGUF](https://huggingface.co/empero-ai/Qwen3.8-2B-Distill-GGUF)
 - Example quantization: `Qwen3.8-2B-Q6_K.gguf`
 
-[Download Qwen3.8-2B-Q6_K.gguf](https://huggingface.co/empero-ai/Qwen3.8-2B-Distill-GGUF/resolve/main/Qwen3.8-2B-Q6_K.gguf?download=true)
-
-After downloading, rename the file to:
-
-```text
-model.gguf
-```
+[⬇️ Download Qwen3.8-2B-Q6_K.gguf](https://huggingface.co/empero-ai/Qwen3.8-2B-Distill-GGUF/resolve/main/Qwen3.8-2B-Q6_K.gguf?download=true)
 
 Then place it inside:
 
 ```text
-models/model.gguf
+models/
 ```
 
-You can replace this file with another compatible model whenever you want.
+You can keep multiple models and switch between them every time you launch. Replace or add `.gguf` files whenever you want.
 
-**Model compatibility depends on the inference runtime and its version.** For example, some newer model architectures require newer llama.cpp builds. Always check the selected model's requirements before choosing a runtime version.
+> [!NOTE]
+> **Model compatibility depends on the inference runtime and its version.** Some newer model architectures require newer llama.cpp builds. Always check the selected model's requirements before choosing a runtime version.
 
-## 3. Run LocalMind
+### 3️⃣ Run LocalMind
 
-### Windows
-
-Double-click:
-
-```text
-run.bat
-```
-
-Or run it from the terminal:
+**Windows** — double-click `run.bat`, or from a terminal:
 
 ```powershell
 .\run.bat
 ```
 
-### Linux
-
-Make the launcher executable:
+**Linux** — make the launcher executable, then run it:
 
 ```bash
 chmod +x run.sh
-```
-
-Run it:
-
-```bash
 ./run.sh
 ```
 
-## 4. Access the Local API
+The launcher will detect your runtime, list the available models, and start the server once you pick one.
+
+## 🌐 Local API
 
 When the server starts successfully, it will be available at:
 
@@ -153,11 +151,12 @@ curl http://127.0.0.1:8080/v1/chat/completions \
   }'
 ```
 
-The exact API behavior depends on the selected runtime.
+> [!NOTE]
+> The exact API behavior depends on the selected runtime.
 
-## GPU and CPU Execution
+## ⚡ GPU and CPU Execution
 
-LocalMind is designed to support both GPU-accelerated and CPU-only inference.
+LocalMind supports both GPU-accelerated and CPU-only inference.
 
 The example llamafile launcher uses automatic GPU backend selection:
 
@@ -167,53 +166,69 @@ The example llamafile launcher uses automatic GPU backend selection:
 
 This requests automatic backend selection and GPU layer offloading. Actual GPU usage depends on the runtime build, available backend, drivers, and hardware.
 
-To explicitly use CPU-only inference, use:
+To explicitly use CPU-only inference:
 
 ```bash
 --gpu disable -ngl 0
 ```
 
-Automatic GPU selection should not be treated as a guarantee of seamless CPU fallback if GPU initialization fails.
+> [!WARNING]
+> Automatic GPU selection should not be treated as a guarantee of seamless CPU fallback if GPU initialization fails.
 
-## Configuration
+## ⚙️ Configuration
 
 The launcher scripts use the following default settings:
 
-| Setting    | Default             |
-| ---------- | ------------------- |
-| Runtime    | llamafile           |
-| Model      | `models/model.gguf` |
-| Host       | `127.0.0.1`         |
-| Port       | `8080`              |
-| GPU mode   | `auto`              |
-| GPU layers | `999`               |
+| Setting    | Default        |
+| ---------- | -------------- |
+| Runtime    | llamafile      |
+| Model      | Any `.gguf` in `models/` (selected at startup) |
+| Host       | `127.0.0.1`    |
+| Port       | `8080`         |
+| GPU mode   | `auto`         |
+| GPU layers | `999`          |
 
 You can modify these values in `run.bat` or `run.sh`.
 
-## Security
+## 🔒 Security
 
-By default, the server listens on `127.0.0.1`, making it accessible only from the local machine.
+By default, the server listens on `127.0.0.1`, making it accessible **only from the local machine**.
 
-Do not expose the server to a public network without implementing appropriate authentication and access controls.
+> [!CAUTION]
+> Do not expose the server to a public network without implementing appropriate authentication and access controls.
 
-## Roadmap
+## 🗺️ Roadmap
 
-- [ ] Support additional inference runtimes.
-- [ ] Automatic hardware and GPU detection.
-- [ ] Runtime configuration.
-- [ ] Model selection.
-- [ ] Model download management.
-- [ ] Context and inference configuration.
-- [ ] Cross-platform improvements.
-- [ ] Simple graphical interface.
-- [ ] OpenAI-compatible API integration across supported runtimes.
+- [ ] Support additional inference runtimes
+- [ ] Automatic hardware and GPU detection
+- [ ] Runtime configuration
+- [ ] Model selection improvements
+- [ ] Model download management
+- [ ] Context and inference configuration
+- [ ] Cross-platform improvements
+- [ ] Simple graphical interface
+- [ ] OpenAI-compatible API integration across supported runtimes
 
-## Contributing
+## 🤝 Contributing
 
-Contributions, bug reports, and suggestions are welcome.
+Contributions, bug reports, and suggestions are **welcome!**
 
-If you want to add support for another runtime or model format, feel free to open an issue or submit a pull request.
+If you want to add support for another runtime or model format, feel free to [open an issue](https://github.com/Ryan-PG/LocalMind/issues) or submit a pull request.
 
-## License
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-See the [LICENSE](LICENSE) file for licensing information.
+## 📄 License
+
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
+
+---
+
+<div align="center">
+
+**LocalMind** — Your models. Your hardware. Your data. 🧠
+
+</div>

@@ -1,0 +1,81 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LocalMind — Run AI models locally">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#151d38"/>
+      <stop offset="1" stop-color="#090d18"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Panel -->
+  <rect x="2" y="2" width="1196" height="296" rx="28" fill="url(#bg)"/>
+  <rect x="2" y="2" width="1196" height="296" rx="28" fill="none" stroke="url(#accent)" stroke-opacity="0.35" stroke-width="2"/>
+
+  <!-- Decorative glow circles on the right -->
+  <circle cx="1080" cy="150" r="210" fill="#a78bfa" opacity="0.06"/>
+  <circle cx="1080" cy="150" r="140" fill="#22d3ee" opacity="0.06"/>
+  <circle cx="1080" cy="150" r="70" fill="#22d3ee" opacity="0.05"/>
+  <g fill="#22d3ee" opacity="0.35">
+    <circle cx="955" cy="92" r="3"/>
+    <circle cx="1035" cy="215" r="3"/>
+    <circle cx="1120" cy="70" r="3"/>
+  </g>
+
+  <!-- Glow behind icon -->
+  <ellipse cx="170" cy="150" rx="150" ry="120" fill="#22d3ee" opacity="0.08"/>
+
+  <!-- Chip icon (scaled from 256 box) -->
+  <g transform="translate(64 44) scale(0.83)">
+    <g fill="url(#accent)" opacity="0.9">
+      <rect x="100" y="60" width="10" height="24" rx="5"/>
+      <rect x="123" y="60" width="10" height="24" rx="5"/>
+      <rect x="146" y="60" width="10" height="24" rx="5"/>
+      <rect x="100" y="172" width="10" height="24" rx="5"/>
+      <rect x="123" y="172" width="10" height="24" rx="5"/>
+      <rect x="146" y="172" width="10" height="24" rx="5"/>
+      <rect x="60" y="100" width="24" height="10" rx="5"/>
+      <rect x="60" y="123" width="24" height="10" rx="5"/>
+      <rect x="60" y="146" width="24" height="10" rx="5"/>
+      <rect x="172" y="100" width="24" height="10" rx="5"/>
+      <rect x="172" y="123" width="24" height="10" rx="5"/>
+      <rect x="172" y="146" width="24" height="10" rx="5"/>
+    </g>
+    <rect x="84" y="84" width="88" height="88" rx="20" fill="none" stroke="url(#accent)" stroke-width="7"/>
+    <rect x="104" y="104" width="48" height="48" rx="13" fill="url(#accent)" opacity="0.92"/>
+    <g stroke="#0a0e1c" stroke-width="3" opacity="0.85">
+      <line x1="119" y1="120" x2="137" y2="120"/>
+      <line x1="119" y1="120" x2="128" y2="138"/>
+      <line x1="137" y1="120" x2="128" y2="138"/>
+    </g>
+    <g fill="#0a0e1c">
+      <circle cx="119" cy="120" r="6.5"/>
+      <circle cx="137" cy="120" r="6.5"/>
+      <circle cx="128" cy="138" r="6.5"/>
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="300" y="142" font-family="Segoe UI, Arial, Helvetica, sans-serif" font-size="84" font-weight="800" letter-spacing="1">
+    <tspan fill="#f4f7fb">Local</tspan><tspan fill="url(#accent)">Mind</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="304" y="186" font-family="Segoe UI, Arial, Helvetica, sans-serif" font-size="24" fill="#9fb0c3">
+    Run AI models locally. Keep your data on your machine.
+  </text>
+
+  <!-- Feature pills -->
+  <g font-family="Segoe UI, Arial, Helvetica, sans-serif" font-size="17" text-anchor="middle">
+    <rect x="302" y="212" width="80" height="36" rx="18" fill="#131a2e" stroke="#2c3d5c" stroke-width="1.5"/>
+    <text x="342" y="236" fill="#7dd3fc">GGUF</text>
+
+    <rect x="396" y="212" width="242" height="36" rx="18" fill="#131a2e" stroke="#2c3d5c" stroke-width="1.5"/>
+    <text x="517" y="236" fill="#c4b5fd">OpenAI-compatible API</text>
+
+    <rect x="652" y="212" width="168" height="36" rx="18" fill="#131a2e" stroke="#2c3d5c" stroke-width="1.5"/>
+    <text x="736" y="236" fill="#7dd3fc">Windows · Linux</text>
+  </g>
+</svg>
